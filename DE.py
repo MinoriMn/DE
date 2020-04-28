@@ -10,7 +10,7 @@ import random
 import numpy as np
 
 
-# In[ ]:
+# In[14]:
 
 
 class DE:
@@ -53,14 +53,7 @@ class DE:
         # 子の評価値算出
         ys_evaluation = [self.func(*y) for y in ys]
         # 親子選択
-        self.xs = np.array([self.xs[i] if self.evaluation[i] >= for i in range(self.N)])
-
-
-# In[12]:
-
-
-a = np.array([[0,1], [1,2]])
-print([a[0]])
+        self.xs = np.array([self.xs[i] if self.evaluation[i] >= ys_evaluation[i] else ys[i] for i in range(self.N)])
 
 
 # In[ ]:
