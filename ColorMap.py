@@ -13,7 +13,7 @@ import numpy as np
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 
-# In[19]:
+# In[1]:
 
 
 class ColorMap:
@@ -32,12 +32,13 @@ class ColorMap:
         self.points = points.reshape(self.width, self.height)
         
     def draw_map(self):
+        plt.figure()
         self.ax = plt.subplot(111)
-        im = self.ax.imshow(self.points, extent=(self.x1_coord[0], self.x1_coord[-1], self.x2_coord[0], self.x2_coord[-1]), cmap='jet')
+        self.im = self.ax.imshow(self.points, extent=(self.x1_coord[0], self.x1_coord[-1], self.x2_coord[0], self.x2_coord[-1]), cmap='jet')
         
         divider = make_axes_locatable(self.ax)
         cax = divider.append_axes("right", size="5%", pad=0.1)
-        plt.colorbar(im, cax=cax)
+        plt.colorbar(self.im, cax=cax)
 
     def draw_points(self, xs, ys, color="red"):
         self.ax.scatter(xs, ys, c=color)
