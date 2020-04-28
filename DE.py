@@ -15,13 +15,12 @@ import numpy as np
 
 class DE:
     # D入力次元数, N集団サイズ, up/lo_lim上限, func評価関数, crossover交叉法, CR交叉率, Fケーリング係数
-    def __init__(self, D, N, up_lim, lo_lim, func, crossover, CR, F):
+    def __init__(self, D, N, up_lim, lo_lim, func, CR, F):
         self.D = D
         self.N = N
         self.up_lim = up_lim
         self.lo_lim = lo_lim
         self.func = func
-        self.crossover = crossover
         self.CR = CR
         self.F = F
         
