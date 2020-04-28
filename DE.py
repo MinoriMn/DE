@@ -29,7 +29,7 @@ class DE:
         
     def solution_search_phase(self):
         # 評価値算出
-        self.evaluation = [self.func(*x) for x in self.xs]
+        self.evaluation = [-self.func(*x) for x in self.xs]
         
         # 子生成
         ys = []
@@ -44,13 +44,13 @@ class DE:
             # /bin
             r = random.randrange(self.D)
             for j in range(self.D):
-                if (j == r) and (random.random() < self.CR):
+                if (j == r) or (random.random() < self.CR):
                     ys.append(x_i_dash)
                 else:
                     ys.append(list(self.xs[i]))
                     
         # 子の評価値算出
-        ys_evaluation = [self.func(*y) for y in ys]
+        ys_evaluation = [-self.func(*y) for y in ys]
         # 親子選択
         self.xs = np.array([self.xs[i] if self.evaluation[i] >= ys_evaluation[i] else ys[i] for i in range(self.N)])
 

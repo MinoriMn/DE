@@ -25,8 +25,6 @@ class ColorMap:
         self.height = height
 
     def generate_coordinate(self):
-#         plt.xlim(*self.x1_range)
-#         plt.ylim(*self.x2_range)
         self.x1_coord = self._map_func(np.array(list(range(self.width))), 0, self.width - 1, self.x1_range[0], self.x1_range[1])
         self.x2_coord = self._map_func(np.array(list(range(self.height))), 0, self.height - 1, self.x2_range[0], self.x2_range[1])
         
@@ -43,7 +41,8 @@ class ColorMap:
 
     def draw_points(self, xs, ys, color="red"):
         self.ax.scatter(xs, ys, c=color)
-            
+        self.ax.set_xlim(*self.x1_range)
+        self.ax.set_ylim(*self.x2_range)
         
     # 範囲変更関数
     @staticmethod
