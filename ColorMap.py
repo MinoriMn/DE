@@ -32,6 +32,7 @@ class ColorMap:
         self.points = points.reshape(self.width, self.height)
         
     def draw_map(self):
+        plt.close()
         plt.figure()
         self.ax = plt.subplot(111)
         self.im = self.ax.imshow(self.points, extent=(self.x1_coord[0], self.x1_coord[-1], self.x2_coord[0], self.x2_coord[-1]), cmap='jet')
